@@ -17,7 +17,24 @@
 *
 */
 
-var rockPaperScissors = function (
+var rockPaperScissors = function (rounds
 ) {
   // TODO: your solution here
+  var result  = [];
+  var choices = ['rock', 'paper', 'scissors'];
+
+  var recursion = function(n, inner) {
+    if (n === 0) {
+      result.push(inner)
+      return;
+    }
+
+    choices.forEach(function(choice) {
+      recursion(n-1, inner.concat(choice))
+    })
+  }
+
+  recursion(rounds, [])
+  
+  return result
 };
