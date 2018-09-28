@@ -20,6 +20,7 @@
 var rockPaperScissors = function (rounds
 ) {
   // TODO: your solution here
+  rounds = rounds || 3
   var result  = [];
   var choices = ['rock', 'paper', 'scissors'];
 
