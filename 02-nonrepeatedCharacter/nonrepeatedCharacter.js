@@ -7,11 +7,9 @@
  */
 
 var firstNonRepeatedCharacter = function(string) {
-  newStr = string.split('').sort().join('')
-
-  for (var i = 0; i < newStr.length; i++) {
-    if (newStr[i+1] !== newStr[i+2] && newStr[i] !== newStr[i+1]) {
-      return newStr[i+1]
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] !== string[i+1] && string.indexOf(string[i+1]) === string.lastIndexOf(string[i+1])) {
+      return string[i+1]
     }
   }
   return null
