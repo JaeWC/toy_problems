@@ -24,4 +24,13 @@
 
 Array.prototype.isSubsetOf = function(array){
   // Your code here
+  let count = 0;
+
+  for (var i = 0; i < this.length; i++) {
+    if (array.includes(this[i])) {
+      count += 1;
+    }
+  }
+
+  return (count === this.length)
 };
