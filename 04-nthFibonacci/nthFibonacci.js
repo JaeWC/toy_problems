@@ -21,7 +21,15 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+  if (n <= 1) return n;
+
+  let fibArray = [0, 1];
+
+  for (let i = 2; i < n + 1; i++) {
+    fibArray.push(fibArray[fibArray.length - 1] + fibArray[fibArray.length - 2]);
+  }
+
+  return fibArray[n];
 };
 
 
