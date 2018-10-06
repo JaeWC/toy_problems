@@ -11,5 +11,11 @@
  */
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+  const newArray = string1.split(' ').join('').split('');
+
+  for (let i = 1; i < arguments.length; i++) {
+    var commonCache = newArray.filter((elem, index) => (arguments[i].includes(elem) && newArray.indexOf(elem) === index))
+  }
+
+  return commonCache.join('');
 };
