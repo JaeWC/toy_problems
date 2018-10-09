@@ -38,7 +38,7 @@ var Tree = function(value){
 Tree.prototype.DFSelect = function(filter) {
   let filterArr = []
 
-  var recursion = (node, depth) => {
+  recursion = (node, depth) => {
     if (filter(node.value, depth)) filterArr.push(node.value)
     
     for (let i = 0; i < node.children.length; i++) {
