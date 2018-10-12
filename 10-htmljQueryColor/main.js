@@ -9,7 +9,7 @@ $(function(){
   var createSpan = () => {
     $('p').each((idx, elem) => {
       let splitted =  $(elem).html().split(' ')
-      let array = splitted.map(elem => '<span>' + elem + '</span>')
+      let array = splitted.map(elem => `<span>${elem}</span>`)
 
       $('p').html(array.join(' '))
     })
@@ -27,9 +27,8 @@ $(function(){
       const r = Math.floor( Math.random() * 255 );
       const g = Math.floor( Math.random() * 255 );
       const b = Math.floor( Math.random() * 255 );
-      const rgb = 'rgb(' + r + ', ' + g + ', ' + b + ')';
 
-      $(elem).css('color', rgb );
+      $(elem).css('color', `rgb(${r}, ${g}, ${b})` );
     });
   };
 
