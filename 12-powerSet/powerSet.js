@@ -29,18 +29,7 @@ var powerSet = function(str) {
   let result = [];
 
   for (let i = 0; i < 2 ** str.length; i++) {
-    var bin = i.toString(2);
-
-    if (bin.length !== str.length) {
-      var diff = str.length - bin.length;
-      if (diff === 3) {
-        bin = "000" + bin;
-      } else if (diff === 2) {
-        bin = "00" + bin;
-      } else if (diff === 1) {
-        bin = "0" + bin;
-      }
-    }
+    let bin = ("0000" + i.toString(2)).slice(-1 * str.length);
 
     let power = "";
     bin.split("").filter((elem, index) => {
