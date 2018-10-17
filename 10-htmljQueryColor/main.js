@@ -19,8 +19,6 @@ $(function(){
   // Next, change spans to random colors, once per second
 
   // TODO: your code here!
-  // console.log($('span'))
-
   var changeColor = () => {
 
     $('span').each((idx, elem) => {
