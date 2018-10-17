@@ -17,5 +17,46 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
-var powerSet = function(str){
-}
+var powerSet = function(str) {
+  var unique = str.split("");
+
+  var unique = unique.reduce(function(a, b) {
+    if (a.indexOf(b) < 0) a.push(b);
+    return a;
+  }, []);
+
+  str = unique.join("");
+
+  let result = [];
+
+  var length = str.length;
+
+  for (var i = 0; i < 2 ** length; i++) {
+    var bin = i.toString(2);
+
+    if (bin.length !== length) {
+      var diff = length - bin.length;
+      if (diff === 3) {
+        bin = "000" + bin;
+      } else if (diff === 2) {
+        bin = "00" + bin;
+      } else if (diff === 1) {
+        bin = "0" + bin;
+      }
+    }
+
+    var splitted = bin.split("");
+    var power = "";
+    splitted.filter(function(elem, index) {
+      // console.log(splitted);
+      if (elem === "1") {
+        // console.log(str[index]);
+        power += str[index];
+      }
+      // result.push(power);
+    });
+    result.push(power);
+  }
+
+  return result.sort();
+};
