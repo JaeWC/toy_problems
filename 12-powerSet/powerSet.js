@@ -18,24 +18,21 @@
  */
 
 var powerSet = function(str) {
-  var unique = str.split("");
-
-  var unique = unique.reduce(function(a, b) {
-    if (a.indexOf(b) < 0) a.push(b);
-    return a;
-  }, []);
-
-  str = unique.join("");
+  str = str
+    .split("")
+    .reduce((a, b) => {
+      if (a.indexOf(b) < 0) a.push(b);
+      return a;
+    }, [])
+    .join("");
 
   let result = [];
 
-  var length = str.length;
-
-  for (var i = 0; i < 2 ** length; i++) {
+  for (let i = 0; i < 2 ** str.length; i++) {
     var bin = i.toString(2);
 
-    if (bin.length !== length) {
-      var diff = length - bin.length;
+    if (bin.length !== str.length) {
+      var diff = str.length - bin.length;
       if (diff === 3) {
         bin = "000" + bin;
       } else if (diff === 2) {
@@ -45,15 +42,11 @@ var powerSet = function(str) {
       }
     }
 
-    var splitted = bin.split("");
-    var power = "";
-    splitted.filter(function(elem, index) {
-      // console.log(splitted);
+    let power = "";
+    bin.split("").filter((elem, index) => {
       if (elem === "1") {
-        // console.log(str[index]);
         power += str[index];
       }
-      // result.push(power);
     });
     result.push(power);
   }
