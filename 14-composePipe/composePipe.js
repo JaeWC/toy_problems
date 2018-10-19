@@ -31,10 +31,12 @@
  *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
 
-'use strict';
+"use strict";
 
-var compose = function(){
+var compose = function(...funcs) {
+  return arg => funcs.reduceRight((elem, func) => func(elem), arg);
 };
 
-var pipe = function(){
+var pipe = function(...funcs) {
+  return arg => funcs.reduce((elem, func) => func(elem), arg);
 };
