@@ -17,5 +17,28 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
-var powerSet = function(str){
-}
+var powerSet = function(str) {
+  str = str
+    .split("")
+    .reduce((a, b) => {
+      if (a.indexOf(b) < 0) a.push(b);
+      return a;
+    }, [])
+    .join("");
+
+  let result = [];
+
+  for (let i = 0; i < 2 ** str.length; i++) {
+    let bin = ("0000" + i.toString(2)).slice(-1 * str.length);
+
+    let power = "";
+    bin.split("").filter((elem, index) => {
+      if (elem === "1") {
+        power += str[index];
+      }
+    });
+    result.push(power);
+  }
+
+  return result.sort();
+};
