@@ -5,11 +5,17 @@
  */
 
 var primeTester = function(n) {
-  if(typeof n !== 'number' || n < 1 || n % 1 !== 0){
+  if (typeof n !== 'number' || n < 1 || (n % 1 !== 0) | (n === 1)) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
   // TODO: return true if n is prime, false otherwise
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
@@ -18,7 +24,13 @@ var primeTester = function(n) {
  * saucy, check out the Sieve of Atkin.)
  */
 
-var primeSieve = function (start, end) {
+var primeSieve = function(start, end) {
+  let result = [];
+
+  for (let i = start; i < end + 1; i++) {
+    if (!!primeTester(i)) {
+      result.push(i);
+    }
+  }
+  return result;
 };
-
-
