@@ -35,7 +35,34 @@
  *
  */
 
-
 var characterFrequency = function(string) {
+  let result = [];
+  let temp = [];
+
+  for (let i = 0; i < string.length; i++) {
+    let idx = temp.indexOf(string[i]);
+    let char = string[i];
+    if (idx !== -1) {
+      let count = result[idx][1];
+      result.splice(idx, 1, [char, count + 1]);
+    } else {
+      temp.push(char);
+      result.push([char, 1]);
+    }
+  }
+
+  result.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return -1;
+    } else if (a[1] < b[1]) {
+      return 1;
+    } else if (a[0] < b[0]) {
+      return -1;
+    } else if (a[0] > b[0]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
   return result;
 };
