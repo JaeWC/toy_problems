@@ -11,4 +11,20 @@
 
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
+  var currentSum = 0;
+  var allTimeSum = 0;
+
+  for (var i = 0; i < array.length; i++) {
+    currentSum += array[i];
+    if (currentSum > allTimeSum) {
+      allTimeSum = currentSum;
+    }
+    if (currentSum < 0) {
+      currentSum = 0;
+    }
+  }
+  if (allTimeSum === 0) {
+    allTimeSum = Math.max.apply(null, array);
+  }
+  return allTimeSum;
 };
