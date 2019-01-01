@@ -21,11 +21,16 @@
  * var result = boundFunc('bar');
  * result === 'foobar'; // true
  *
-*/
+ */
 
-var bind = function(
-) {
+var bind = function(func, context) {
   // TODO: Your code here
+  const outerArgs = Array.prototype.slice.call(arguments, 2);
+  return function() {
+    const innerArgs = Array.prototype.slice.call(arguments);
+    const totalArgs = Array.prototype.concat(outerArgs, innerArgs);
+    return func.apply(context, totalArgs);
+  };
 };
 
 /*
@@ -51,9 +56,15 @@ var bind = function(
  * var result = boundFunc('bar');
  * result === 'foobar'; // true
  *
-*/
+ */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function(context) {
   // TODO: Your code here
+  const fn = this;
+  const outerArgs = Array.prototype.slice.call(arguments, 1);
+  return function() {
+    const innerArgs = Array.prototype.slice.call(arguments);
+    const totalArgs = Array.prototype.concat(outerArgs, innerArgs);
+    return fn.apply(context, totalArgs);
+  };
 };
