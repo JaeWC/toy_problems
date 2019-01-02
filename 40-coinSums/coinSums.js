@@ -24,8 +24,24 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
-var makeChange = function(total){
+var makeChange = function(total) {
+  let count = 0;
+  const coin = [1, 2, 5, 10, 20, 50, 100, 200];
 
+  if (total === 1) return 1;
+  recursion = (index, value) => {
+    let current = coin[index];
+    if (index === 0) {
+      if (value % current === 0) count++;
+      return;
+    }
+
+    while (value >= 0) {
+      recursion(index - 1, value);
+      value -= current;
+    }
+  };
+
+  recursion(coin.length - 1, total);
+  return count;
 };
-
-
