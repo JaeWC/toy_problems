@@ -22,5 +22,21 @@
 
 var mixEvents = function(obj) {
   // TODO: Your code here
+  let events = {};
+  obj.on = function(event, callback) {
+    if (!events[event]) {
+      events[event] = [];
+    }
+    events[event].push(callback);
+  };
+
+  obj.trigger = function(event) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    if (events[event]) {
+      for (let i = 0; i < events[event].length; i++) {
+        events[event][i].apply(this, args);
+      }
+    }
+  };
   return obj;
 };
